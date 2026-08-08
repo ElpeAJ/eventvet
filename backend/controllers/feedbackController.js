@@ -1,76 +1,66 @@
-const mysql = require('mysql');
-const dbConfig = require('../config/db');
+const Feedback = require('../models/feedbackmodel');
 
-// Create a connection pool
-const pool = mysql.createPool(dbConfig);
-
-// Controller function to create a new feedback entry
-exports.createFeedback = (req, res) => {
-    const { title, content, userId } = req.body;
-    pool.query('INSERT INTO feedback (title, content, userId) VALUES (?, ?, ?)', [title, content, userId], (error, results) => {
-        if (error) {
-            console.error('Error creating feedback:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        res.status(201).json({ id: results.insertId, title, content, userId });
-    });
+// Create a new feedback entry
+exports.createFeedback = async (req, res) => {
+    try {
+        const { user_id, vendor_id, rating, review_content } = req.body;
+        const feedback = await Feedback.create({ user_id, vendor_id, rating, review_content });
+        return res.status(201).json(feedback);
+    } catch (error) {
+        console.error('Error creating feedback:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
-// Controller function to get all feedback entries
-exports.getAllFeedback = (req, res) => {
-    pool.query('SELECT * FROM feedback', (error, results) => {
-        if (error) {
-            console.error('Error getting feedback:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        res.json(results);
-    });
+// Get all feedback entries
+exports.getAllFeedback = async (req, res) => {
+    try {
+        const feedbacks = await Feedback.findAll();
+        return res.json(feedbacks);
+    } catch (error) {
+        console.error('Error getting feedback:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
-// Controller function to get a feedback entry by ID
-exports.getFeedbackById = (req, res) => {
-    const { id } = req.params;
-    pool.query('SELECT * FROM feedback WHERE id = ?', [id], (error, results) => {
-        if (error) {
-            console.error('Error getting feedback by ID:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        if (results.length === 0) {
-            return res.status(404).json({ message: 'Feedback not found' });
-        }
-        res.json(results[0]);
-    });
+// Get a feedback entry by ID
+exports.getFeedbackById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const feedback = await Feedback.findByPk(id);
+        if (!feedback) return res.status(404).json({ message: 'Feedback not found' });
+        return res.json(feedback);
+    } catch (error) {
+        console.error('Error getting feedback by ID:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
-// Controller function to update a feedback entry
-exports.updateFeedback = (req, res) => {
-    const { id } = req.params;
-    const { title, content } = req.body;
-    pool.query('UPDATE feedback SET title = ?, content = ? WHERE id = ?', [title, content, id], (error, results) => {
-        if (error) {
-            console.error('Error updating feedback:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        if (results.affectedRows === 0) {
-            return res.status(404).json({ message:'Feedback not found' });
-        }
-        res.json({ id, title, content });
-    });
+// Update a feedback entry
+exports.updateFeedback = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { rating, review_content } = req.body;
+        const [updated] = await Feedback.update({ rating, review_content }, { where: { id } });
+        if (!updated) return res.status(404).json({ message: 'Feedback not found' });
+        return res.json({ id, rating, review_content });
+    } catch (error) {
+        console.error('Error updating feedback:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
-// Controller function to delete a feedback entry
-exports.deleteFeedback = (req, res) => {
-    const { id } = req.params;
-    pool.query('DELETE FROM feedback WHERE id = ?', [id], (error, results) => {
-        if (error) {
-            console.error('Error deleting feedback:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        if (results.affectedRows === 0) {
-            return res.status(404).json({ message: 'Feedback not found' });
-        }
-        res.json({ message: 'Feedback deleted successfully' });
-    });
+// Delete a feedback entry
+exports.deleteFeedback = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleted = await Feedback.destroy({ where: { id } });
+        if (!deleted) return res.status(404).json({ message: 'Feedback not found' });
+        return res.json({ message: 'Feedback deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting feedback:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 

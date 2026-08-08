@@ -1,103 +1,78 @@
-const db = require('../config/db');
+const Vendor = require('../models/vendormodel');
 
 // Register new vendor
 const registerVendor = async (req, res) => {
     try {
-        const { name, category, description, contact, website, portfolio_Link } = req.body;
-
-        const newVendorQuery = `
-            INSERT INTO Vendors (name, category, description, contact, website, portfolio_Link)
-            VALUES (?, ?, ?, ?, ?, ?)`;
-        await db.query(newVendorQuery, [name, category, description, contact, website, portfolio_Link]);
-
-        res.status(201).json({ message: 'Vendor registered successfully' });
+        const { name, category, description, contact, website, portfolio_link } = req.body;
+        const vendor = await Vendor.create({ name, category, description, contact, website, portfolio_link });
+        return res.status(201).json({ message: 'Vendor registered successfully', vendor });
     } catch (error) {
         console.error('Error registering vendor:', error);
-        res.status(500).json({ message: 'Internal Server Error' });
+        return res.status(500).json({ message: 'Internal Server Error' });
     }
 };
 
 // Submit vendor information
 const submitVendorInfo = async (req, res) => {
     try {
-        const { yearsOfExperience, location, portfolio } = req.body;
-
-        const newVendorQuery = `
-            INSERT INTO Vendors (years_of_experience, location, portfolio)
-            VALUES (?, ?, ?)`;
-        await db.query(newVendorQuery, [yearsOfExperience, location, portfolio]);
-
-        res.status(201).json({ message: 'Submitted successfully' });
+        const { years_of_experience, location, portfolio } = req.body;
+        const vendor = await Vendor.create({ years_of_experience, location, portfolio });
+        return res.status(201).json({ message: 'Submitted successfully', vendor });
     } catch (error) {
         console.error('Error submitting form:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        return res.status(500).json({ message: 'Internal server error' });
     }
 };
 
 // Retrieve all vendors
-const getAllVendors = (req, res) => {
-    const sql = 'SELECT * FROM Vendors';
-    db.query(sql, (err, results) => {
-        if (err) {
-            console.error('Error fetching vendors:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else {
-            res.json(results);
-        }
-    });
+const getAllVendors = async (req, res) => {
+    try {
+        const vendors = await Vendor.findAll();
+        return res.json(vendors);
+    } catch (err) {
+        console.error('Error fetching vendors:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 // Retrieve a single vendor by ID
-const getVendorById = (req, res) => {
-    const { id } = req.params;
-    const sql = 'SELECT * FROM Vendors WHERE id = ?';
-
-    db.query(sql, id, (err, result) => {
-        if (err) {
-            console.error('Error fetching vendor by ID:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else if (result.length === 0) {
-            res.status(404).json({ message: 'Vendor not found' });
-        } else {
-            res.json(result[0]);
-        }
-    });
+const getVendorById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const vendor = await Vendor.findByPk(id);
+        if (!vendor) return res.status(404).json({ message: 'Vendor not found' });
+        return res.json(vendor);
+    } catch (err) {
+        console.error('Error fetching vendor by ID:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 // Update a vendor by ID
-const updateVendorById = (req, res) => {
-    const { name, category, description, contact, website, portfolioLink } = req.body;
-    const { id } = req.params;
-    const sql = 'UPDATE Vendors SET name = ?, category = ?, description = ?, contact = ?, website = ?, portfolio_Link = ? WHERE id = ?';
-    const values = [name, category, description, contact, website, portfolioLink, id];
-
-    db.query(sql, values, (err, result) => {
-        if (err) {
-            console.error('Error updating vendor by ID:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else if (result.affectedRows === 0) {
-            res.status(404).json({ message: 'Vendor not found' });
-        } else {
-            res.json({ message: 'Vendor updated successfully', vendor_id: id });
-        }
-    });
+const updateVendorById = async (req, res) => {
+    try {
+        const { name, category, description, contact, website, portfolio_link } = req.body;
+        const { id } = req.params;
+        const [updated] = await Vendor.update({ name, category, description, contact, website, portfolio_link }, { where: { id } });
+        if (!updated) return res.status(404).json({ message: 'Vendor not found' });
+        return res.json({ message: 'Vendor updated successfully', vendor_id: id });
+    } catch (err) {
+        console.error('Error updating vendor by ID:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 // Delete a vendor by ID
-const deleteVendorById = (req, res) => {
-    const { id } = req.params;
-    const sql = 'DELETE FROM Vendors WHERE id = ?';
-
-    db.query(sql, id, (err, result) => {
-        if (err) {
-            console.error('Error deleting vendor by ID:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else if (result.affectedRows === 0) {
-            res.status(404).json({ message: 'Vendor not found' });
-        } else {
-            res.json({ message: 'Vendor deleted successfully' });
-        }
-    });
+const deleteVendorById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleted = await Vendor.destroy({ where: { id } });
+        if (!deleted) return res.status(404).json({ message: 'Vendor not found' });
+        return res.json({ message: 'Vendor deleted successfully' });
+    } catch (err) {
+        console.error('Error deleting vendor by ID:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 module.exports = {
