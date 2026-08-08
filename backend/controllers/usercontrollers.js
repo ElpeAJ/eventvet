@@ -1,125 +1,66 @@
-const mysql = require('mysql');
-const dbConfig = require('../config/db');
-
+const User = require('../models/usermodel');
 
 // Create a new user
-exports.createUser = (req, res) => {
-    const { username, email, password, category, phone_number, address } = req.body;
-    const query = `INSERT INTO Users (username, email, password, category, phone_number, address) VALUES (?, ?, ?, ?, ?, ?)`;
-    const values = [username, email, password, category, phone_number, address];
-
-    // Create a connection to the database
-    const connection = mysql.createConnection(dbConfig);
-
-    // Execute the query
-    connection.query(query, values, (err, result) => {
-        if (err) {
-            console.error('Error creating user:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else {
-            res.status(201).json({ message: 'User created successfully', user: { id: result.insertId, username, email, category } });
-        }
-    });
-
-    // Close the connection
-    connection.end();
+exports.createUser = async (req, res) => {
+    try {
+        const { username, email, password, category, phone_number, address } = req.body;
+        const user = await User.create({ username, email, password, category, phone_number, address });
+        return res.status(201).json({ message: 'User created successfully', user });
+    } catch (err) {
+        console.error('Error creating user:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 // Retrieve all users
-exports.getAllUsers = (req, res) => {
-    const query = `SELECT * FROM Users`;
-
-    // Create a connection to the database
-    const connection = mysql.createConnection(dbConfig);
-
-    // Execute the query
-    connection.query(query, (err, results) => {
-        if (err) {
-            console.error('Error fetching users:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else {
-            res.status(200).json(results);
-        }
-    });
-
-    // Close the connection
-    connection.end();
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.findAll();
+        return res.status(200).json(users);
+    } catch (err) {
+        console.error('Error fetching users:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 // Retrieve a single user by ID
-exports.getUserById = (req, res) => {
-    const userId = req.params.id;
-    const query = `SELECT * FROM Users WHERE id = ?`;
-    const values = [userId];
-
-    // Create a connection to the database
-    const connection = mysql.createConnection(dbConfig);
-
-    // Execute the query
-    connection.query(query, values, (err, results) => {
-        if (err) {
-            console.error('Error fetching user by ID:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else if (results.length === 0) {
-            res.status(404).json({ message: 'User not found' });
-        } else {
-            res.status(200).json(results[0]);
-        }
-    });
-
-    // Close the connection
-    connection.end();
+exports.getUserById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findByPk(userId);
+        if (!user) return res.status(404).json({ message: 'User not found' });
+        return res.status(200).json(user);
+    } catch (err) {
+        console.error('Error fetching user by ID:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 // Update a user by ID
-exports.updateUserById = (req, res) => {
-    const userId = req.params.id;
-    const { username, email, category, phone_number, address } = req.body;
-    const query = `UPDATE Users SET username = ?, email = ?, category = ?, phone_number = ?, address = ? WHERE id = ?`;
-    const values = [username, email, category, phone_number, address, userId];
-
-    // Create a connection to the database
-    const connection = mysql.createConnection(dbConfig);
-
-    // Execute the query
-    connection.query(query, values, (err, result) => {
-        if (err) {
-            console.error('Error updating user:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else if (result.affectedRows === 0) {
-            res.status(404).json({ message: 'User not found' });
-        } else {
-            res.status(200).json({ message: 'User updated successfully' });
-        }
-    });
-
-    // Close the connection
-    connection.end();
+exports.updateUserById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const { username, email, category, phone_number, address } = req.body;
+        const [updated] = await User.update({ username, email, category, phone_number, address }, { where: { id: userId } });
+        if (!updated) return res.status(404).json({ message: 'User not found' });
+        return res.status(200).json({ message: 'User updated successfully' });
+    } catch (err) {
+        console.error('Error updating user:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 // Delete a user by ID
-exports.deleteUserById = (req, res) => {
-    const userId = req.params.id;
-    const query = `DELETE FROM Users WHERE id = ?`;
-    const values = [userId];
-
-    // Create a connection to the database
-    const connection = mysql.createConnection(dbConfig);
-
-    // Execute the query
-    connection.query(query, values, (err, result) => {
-        if (err) {
-            console.error('Error deleting user:', err);
-            res.status(500).json({ message: 'Internal server error' });
-        } else if (result.affectedRows === 0) {
-            res.status(404).json({ message: 'User not found' });
-        } else {
-            res.status(200).json({ message: 'User deleted successfully' });
-        }
-    });
-
-    // Close the connection
-    connection.end();
+exports.deleteUserById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const deleted = await User.destroy({ where: { id: userId } });
+        if (!deleted) return res.status(404).json({ message: 'User not found' });
+        return res.status(200).json({ message: 'User deleted successfully' });
+    } catch (err) {
+        console.error('Error deleting user:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 module.exports = {

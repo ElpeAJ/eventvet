@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
-const pool = require('../config/db');
+const sequelize = require('../config/db');
+const User = require('../models/usermodel');
 const nodemailer = require('nodemailer');
 
 // Register new user
@@ -22,14 +23,14 @@ const register = async (req, res) =>{
         const hashedPassword = await
         bcrypt.hash(password, 10);
 
-        const newUserQuery = 'INSERT INTO Users (fullname, email, password) VALUES(?, ?,?)';
-        await pool.query(newUserQuery, [fullname, email, hashedPassword]);
+        // create user via Sequelize
+        await User.create({ username: fullname, email, password: hashedPassword, category: 'Event Planner' });
 
-        //Redirect to landing page after sucessful registration
-        res.redirect('/landing');c
-    }catch (error){
+        // Redirect to landing page after successful registration
+        return res.status(201).json({ message: 'User registered' });
+    } catch (error) {
         console.error('error in registering user:', error);
-        res.ststus(500).json({message: 'Internal Service error'});
+        return res.status(500).json({ message: 'Internal server error' });
     }
 };
 
@@ -42,9 +43,7 @@ const login = async (req, res) => {
         }
         const { email, password } = req.body;
 
-        const userQuery = 'SELECT * FROM Users WHERE email = ?';
-        const [rows] = await pool.query(userQuery, [email]);
-        const user = rows[0];
+        const user = await User.findOne({ where: { email } });
 
         if (!user) {
             return res.status(401).json({ message: 'Invalid credentials' });
@@ -63,7 +62,7 @@ const login = async (req, res) => {
         res.json({ token });
     } catch (error) {
         console.error('Error in user login', error);
-        res.status(500).json({ message: 'Internal server error' });
+        return res.status(500).json({ message: 'Internal server error' });
     }
 };
 
@@ -72,13 +71,8 @@ const forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
 
-        const userQuery = 'SELECT * FROM Users WHERE email = ?';
-        const [rows] = await pool.query(userQuery, [email]);
-        const user = rows[0];
-
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
+        const user = await User.findOne({ where: { email } });
+        if (!user) return res.status(404).json({ message: 'User not found' });
 
         const resetToken = jwt.sign({ email }, process.env.RESET_PASSWORD_SECRET, { expiresIn: '30m' });
         const resetLink = `${req.protocol}://${req.get('host')}/reset-password?token=${resetToken}`;
@@ -101,7 +95,7 @@ const forgotPassword = async (req, res) => {
         };
 
         await transporter.sendMail(mailOptions);
-        res.status(200).json({ message: 'Reset password email sent' });
+        return res.status(200).json({ message: 'Reset password email sent' });
     } catch (error) {
         console.error('Error in sending reset password email:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -113,22 +107,17 @@ const resetPassword = async (req, res) => {
     try {
         const { token, password } = req.body;
 
-        if (!token) {
-            return res.status(400).json({ message: 'Token is required' });
-        }
+        if (!token) return res.status(400).json({ message: 'Token is required' });
 
         jwt.verify(token, process.env.RESET_PASSWORD_SECRET, async (err, decodedToken) => {
-            if (err) {
-                return res.status(401).json({ message: 'Invalid or expired token' });
-            }
+            if (err) return res.status(401).json({ message: 'Invalid or expired token' });
 
             const { email } = decodedToken;
             const hashedPassword = await bcrypt.hash(password, 10);
 
-            const updatePasswordQuery = 'UPDATE Users SET password = ? WHERE email = ?';
-            await pool.query(updatePasswordQuery, [hashedPassword, email]);
+            await User.update({ password: hashedPassword }, { where: { email } });
 
-            res.status(200).json({ message: 'Password reset successfully' });
+            return res.status(200).json({ message: 'Password reset successfully' });
         });
     } catch (error) {
         console.error('Error in resetting password:', error);

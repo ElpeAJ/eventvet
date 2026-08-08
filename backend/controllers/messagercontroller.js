@@ -1,76 +1,66 @@
+const Message = require('../models/messagemodel');
 
-const dbConfig = require('../config/db');
-
-// Create a connection pool
-const pool = mysql.createPool(dbConfig);
-
-// Controller function to create a new message
-exports.createMessage = (req, res) => {
-    const { content, senderId, receiverId } = req.body;
-    pool.query('INSERT INTO messages (content, senderId, receiverId) VALUES (?, ?, ?)', [content, senderId, receiverId], (error, results) => {
-        if (error) {
-            console.error('Error creating message:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        res.status(201).json({ id: results.insertId, content, senderId, receiverId });
-    });
+// Create a new message
+exports.createMessage = async (req, res) => {
+    try {
+        const { message_content, sender_id, receiver_id } = req.body;
+        const message = await Message.create({ message_content, sender_id, receiver_id });
+        return res.status(201).json(message);
+    } catch (error) {
+        console.error('Error creating message:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
-// Controller function to get all messages
-exports.getAllMessages = (req, res) => {
-    pool.query('SELECT * FROM messages', (error, results) => {
-        if (error) {
-            console.error('Error getting messages:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        res.json(results);
-    });
+// Get all messages
+exports.getAllMessages = async (req, res) => {
+    try {
+        const messages = await Message.findAll();
+        return res.json(messages);
+    } catch (error) {
+        console.error('Error getting messages:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
-// Controller function to get a message by ID
-exports.getMessageById = (req, res) => {
-    const { id } = req.params;
-    pool.query('SELECT * FROM messages WHERE id = ?', [id], (error, results) => {
-        if (error) {
-            console.error('Error getting message by ID:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        if (results.length === 0) {
-            return res.status(404).json({ message: 'Message not found' });
-        }
-        res.json(results[0]);
-    });
+// Get a message by ID
+exports.getMessageById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const message = await Message.findByPk(id);
+        if (!message) return res.status(404).json({ message: 'Message not found' });
+        return res.json(message);
+    } catch (error) {
+        console.error('Error getting message by ID:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
-// Controller function to update a message
-exports.updateMessage = (req, res) => {
-    const { id } = req.params;
-    const { content } = req.body;
-    pool.query('UPDATE messages SET content = ? WHERE id = ?', [content, id], (error, results) => {
-        if (error) {
-            console.error('Error updating message:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        if (results.affectedRows === 0) {
-            return res.status(404).json({ message: 'Message not found' });
-        }
-        res.json({ id,content });
-    });
+// Update a message
+exports.updateMessage = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { message_content } = req.body;
+        const [updated] = await Message.update({ message_content }, { where: { id } });
+        if (!updated) return res.status(404).json({ message: 'Message not found' });
+        return res.json({ id, message_content });
+    } catch (error) {
+        console.error('Error updating message:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
-// Controller function to delete a message
-exports.deleteMessage = (req, res) => {
-    const { id } = req.params;
-    pool.query('DELETE FROM messages WHERE id = ?', [id], (error, results) => {
-        if (error) {
-            console.error('Error deleting message:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-        if (results.affectedRows === 0) {
-            return res.status(404).json({ message: 'Message not found' });
-        }
-        res.json({ message: 'Message deleted successfully' });
-    });
+// Delete a message
+exports.deleteMessage = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleted = await Message.destroy({ where: { id } });
+        if (!deleted) return res.status(404).json({ message: 'Message not found' });
+        return res.json({ message: 'Message deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting message:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
 
 module.exports = {

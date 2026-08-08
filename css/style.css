@@ -763,3 +763,73 @@ footer {
   margin-top: 20px;
   font-size: 14px;
 }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .nav {
+    padding: 8px 16px;
+  }
+  .navigation ul {
+    gap: 16px;
+  }
+  main .bg {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+  .fourpack {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation ul {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .navigation ul li {
+    padding: 6px 8px;
+  }
+  main .bg {
+    grid-template-columns: 1fr;
+    width: 95%;
+    margin: 0 auto;
+    height: auto;
+    padding: 24px 0;
+  }
+  .browse-images {
+    gap: 12px;
+  }
+  .browse-img {
+    width: 120px;
+  }
+  .LTrusted {
+    font-size: clamp(48px, 8vw, 96px);
+    margin-left: 8px;
+  }
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .become {
+    margin-left: 20px;
+    width: auto;
+  }
+  .Parabutt {
+    margin-bottom: 40px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 420px) {
+  .navigation ul {
+    justify-content: center;
+  }
+  .eventbtns, .vends {
+    font-size: clamp(28px, 8vw, 56px);
+  }
+  .paragraph-button {
+    margin-top: 80px;
+    margin-left: 16px;
+  }
+}
