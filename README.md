@@ -1,11 +1,29 @@
-# Eventvet: Decoupled Full-Stack Event Discovery Engine with Relational SQL Backend
+## 📌 Project Overview
+**Eventvet** is a full-stack, responsive event discoverability and transactional ticketing platform engineered as a collaborative Capstone Project within the **Tech4Dev** curriculum. The system bridges the gap between digital content delivery and local access scheduling by organizing real-time event parameters—such as chronological timelines, pricing matrices, and venue allocations—into a clean, fluid user interface.
+
+The application features a decoupled architecture where an event-driven Vanilla JavaScript frontend consumes, parses, and renders dynamic records served by a dedicated backend application tier powered by a relational SQL database managed via Sequelize. 
+
+> ⚠️ **Project Development Status: Active / Incomplete**  
+> This platform is a collaborative MVP (Minimum Viable Product) currently in an active developmental sprint phase. Core structural database engines and primary asynchronous API communication pipelines are fully operational, while secondary consumer microservices remain on our feature implementation roadmap.
 
 <img width="1453" height="781" alt="Screenshot 2026-08-11 at 10 11 50 PM" src="https://github.com/user-attachments/assets/7736b707-5ebc-4799-94fd-10efc5481610" />
 
-## 📌 Project Overview
-**Eventvet** is a full-stack, responsive event discoverability and transactional ticketing platform engineered as a premier Capstone Project within the **Tech4Dev** curriculum. The system bridges the gap between digital content delivery and local access scheduling by organizing real-time event parameters—such as chronological timelines, pricing matrices, and venue allocations—into a clean, fluid user interface.
+## 👥 Group Collaborators & Project Status
 
-The application features a decoupled architecture where an event-driven Vanilla JavaScript frontend consumes, parses, and renders dynamic records served by a dedicated backend application tier powered by a relational SQL database.
+This system was engineered collectively within an Agile team structure, dividing responsibilities symmetrically across front-end delivery matrices and back-end structural data layers.
+
+### Team Members & Focus Areas
+* **Elpedia J. Arthur** — Lead Full-Stack Integration, Sequelize ORM Migrations, Authentication Architecture, and API Routing Optimization.
+* **[Member Name 2]** — Frontend DOM Manipulation, Layout Architecture, and Event-Driven Action Listeners.
+* **[Member Name 3]** — Database Schema Design, Mock Ingestion Payloads, and System Testing.
+
+### Current Implementation Matrix (Roadmap Progress)
+* [x] **Relational Schema Definition:** Completed relational model structures within the `/models` directory using Sequelize.
+* [x] **Asynchronous Network Pipeline:** Completed `fetch`/`Axios` data fetching gateways on the client interface.
+* [x] **User Authentication Ingestion:** Completed secure backend data routes with `bcryptjs` encryption layers.
+* [o] **Transactional Ticket Allocations:** *In Progress* — Optimizing atomic SQL locking mechanisms to handle high-concurrency booking actions cleanly.
+* [ ] **Automated Payment Gateway Mocking:** *Planned* — Scheduled integration for third-party mock banking payment webhooks.
+
 
 ## 📱 Application Interface
 <img width="1435" height="847" alt="Screenshot 2026-08-11 at 10 04 46 PM" src="https://github.com/user-attachments/assets/6a85729b-8719-4983-a0dc-bf2f7f9f8368" />
@@ -55,22 +73,32 @@ To audit, modify, or run this full-stack platform environment locally, execute t
    ```
 
 ### 2. Initialize the Database & Backend Environment
-*(Note: Update this section with your specific SQL setup instructions, like running an `init.sql` script or setting database environment variables.)*
+The backend infrastructure utilizes the **Sequelize ORM** engine to handle schema migrations and synchronize relational structures automatically upon system runtime.
 
-1. **Configure the Database Schema:**
-   Import the project's foundational schema files into your local SQL client engine instance to generate the relational table configurations.
-2. **Activate the Backend Server:**
+1. **Configure Your Environment Matrix:**
+   Create a file named `.env` inside the root of your `/backend` directory and add your localized MySQL database connection credentials:
+   ```env
+   DB_HOST=localhost
+   DB_USER=your_mysql_username
+   DB_PASSWORD=your_mysql_password
+   DB_NAME=your_database_name
+   JWT_SECRET=your_jwt_encryption_key
+   ```
+
+2. **Ingest Dependencies & Launch Server Lifecycle:**
+   Execute the package script to pull in runtime modules and initialize the development gateway. Sequelize will automatically evaluate the definitions inside the `/models` directory and generate your relational MySQL tables:
    ```bash
    cd backend
-   npm install && npm start  # Or your specific backend server execution command
+   npm install
+   npm run dev
    ```
 
 ### 3. Launch the Frontend Client
-Open a secondary terminal workspace, head back to your main project directory, and serve your client files:
+Open a secondary terminal workspace, navigate back out to your main project root directory, and serve your client presentation files:
 ```bash
 cd ../
 # If using a local dev server wrapper or running a basic live script
-npm start                 # Or simply open index.html directly via a local browser extension
+npm start  # Or simply open index.html directly via a local browser environment extension
 ```
 
 ---
