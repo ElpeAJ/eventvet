@@ -13,9 +13,9 @@ The application features a decoupled architecture where an event-driven Vanilla 
 This system was engineered collectively within an Agile team structure, dividing responsibilities symmetrically across front-end delivery matrices and back-end structural data layers.
 
 ### Team Members & Focus Areas
-* **Elpedia J. Arthur** — Lead Full-Stack Integration, Sequelize ORM Migrations, Authentication Architecture, and API Routing Optimization.
-* **[Member Name 2]** — Frontend DOM Manipulation, Layout Architecture, and Event-Driven Action Listeners.
-* **[Member Name 3]** — Database Schema Design, Mock Ingestion Payloads, and System Testing.
+* **Elpedia J. Arthur** — Frontend DOM Manipulation, Layout Architecture, and Event-Driven Action Listeners.
+* **Ebere Adekogbe** — Frontend DOM Manipulation, Layout Architecture, and Event-Driven Action Listeners.
+* **The Quiet Note** — Database Schema Design, Mock Ingestion Payloads, and System Testing.
 
 ### Current Implementation Matrix (Roadmap Progress)
 * [x] **Relational Schema Definition:** Completed relational model structures within the `/models` directory using Sequelize.
