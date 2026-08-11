@@ -1,233 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/credibility.css" />
-  <script src="https://kit.fontawesome.com/acc40c9880.js" crossorigin="anonymous"></script>
-  <title>credibility Page</title>
+  <title>Credibility Scoring Dashboard</title>
+  <!-- FontAwesome Icon Suite -->
+   <script src="https://kit.fontawesome.com/acc40c9880.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../css/credibility.css" />
 </head>
-
 <body>
-  <div class="credibility">
-    <div class="column">
-      <div class="column-features">
-        <div><img src="../images/logo.svg" alt="Logo" srcset="" /></div>
+  <!-- <script src="https://fontawesome.com" crossorigin="anonymous"></script> -->
+
+  <div class="credibility-layout">
+    
+    <!-- Sidebar Navigation Drawer -->
+    <aside class="sidebar">
+      <div class="brand-logo">
+        <img src="../images/logo.svg" alt="Ventvet Logo" />
       </div>
-      <div class="column-features">
-        <div><img src="../images/yourevent.svg" alt="icons" /></div>
-        <div class="column-features-text">Your Event</div>
-      </div>
-      <div class="column-features">
-        <div><img src="../images/venues.svg" alt="icons" /></div>
-        <div class="column-features-text">Venues</div>
-      </div>
-      <div class="column-features">
-        <div><img src="../images/vendors.svg" alt="icons" /></div>
-        <div class="column-features-text">Vendors</div>
-      </div>
-      <div class="column-features color-differ">
-        <div><img src="../images/credibility.svg" alt="icons" /></div>
-        <div class="column-features-text credibility-scoring">credibility Scoring</div>
-      </div>
-      <div class="column-features">
-        <div><img src="../images/guest.svg" alt="icons" /></div>
-        <div class="column-features-text">Guest list</div>
-      </div>
-      <div class="column-features">
-        <div><img src="../images/budgeting.svg" alt="icons" /></div>
-        <div class="column-features-text">Budgeting tools</div>
-      </div>
-      <div class="column-features">
-        <div><img src="../images/help.svg" alt="icons" /></div>
-        <div class="column-features-text">Help</div>
-      </div>
-      <div class="column-features">
-        <div><img src="../images/settings.svg" alt="icons" /></div>
-        <div class="column-features-text">Settings</div>
-      </div>
-      <div class="column-features">
-        <div><img src="../images/logout.svg" alt="icons" /></div>
-        <div class="column-features-text">Log out</div>
-      </div>
-    </div>
-    <div class="main">
-      <div class="search-dashboard">
-        <div>
-          <h2>15 Event decorators in Abuja</h2>
+      <nav class="sidebar-menu">
+        <a href="#" class="menu-item">
+          <img src="../images/yourevent.svg" alt="" /> <span>Your Event</span>
+        </a>
+        <a href="#" class="menu-item">
+          <img src="../images/venues.svg" alt="" /> <span>Venues</span>
+        </a>
+        <a href="#" class="menu-item">
+          <img src="../images/vendors.svg" alt="" /> <span>Vendors</span>
+        </a>
+        <a href="#" class="menu-item active">
+          <img src="../images/credibility.svg" alt="" /> <span>Credibility Scoring</span>
+        </a>
+        <a href="#" class="menu-item">
+          <img src="../images/guest.svg" alt="" /> <span>Guest list</span>
+        </a>
+        <a href="#" class="menu-item">
+          <img src="../images/budgeting.svg" alt="" /> <span>Budgeting tools</span>
+        </a>
+        <a href="#" class="menu-item">
+          <img src="../images/help.svg" alt="" /> <span>Help</span>
+        </a>
+        <a href="#" class="menu-item">
+          <img src="../images/settings.svg" alt="" /> <span>Settings</span>
+        </a>
+        <a href="#" class="menu-item logout">
+          <img src="../images/logout.svg" alt="" /> <span>Log out</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Workspace Window Pane -->
+    <main class="main-content">
+      
+      <!-- Top Content Header Bar -->
+      <header class="dashboard-header">
+        <h2>15 Event decorators in Abuja</h2>
+        <div class="header-actions">
+          <form class="search-bar" role="search">
+            <input type="search" placeholder="Search Dashboard" aria-label="Search" />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+          <button class="icon-btn" aria-label="Notifications">
+            <img src="../images/notification.svg" alt="" />
+          </button>
+          <button class="icon-btn" aria-label="Messages">
+            <img src="../images/comment.svg" alt="" />
+          </button>
         </div>
-        <div class="stay-in-touch">
-          <div>
-            <form action="" class="dashboard-search">
-              <input type="text" name="" id="" placeholder="Search Dashboad" /><button><img src="../images/search.svg"
-                  alt=""></button>
-            </form>
+      </header>
+
+      <h5 class="marquee-subheading">Blue velvet marquee, decor</h5>
+
+      <!-- Structured Parameters Form Filter Section -->
+      <form id="filter-form" method="GET" action="">
+        <nav class="filter-navigation" aria-label="Dashboard Filters">
+          <ul class="filter-list">
+            
+            <li class="dropdown">
+              <button type="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <img src="../images/category.svg" alt="" class="btn-icon" />
+                <span>Category</span>
+                <i class="fas fa-angle-down"></i>
+              </button>
+              <div class="dropdown-panel">
+                <label class="option-row"><input type="checkbox" name="category" value="cat_1" /> Category 1</label>
+                <label class="option-row"><input type="checkbox" name="category" value="cat_2" /> Category 2</label>
+                <label class="option-row"><input type="checkbox" name="category" value="cat_3" /> Category 3</label>
+                <label class="option-row"><input type="checkbox" name="category" value="cat_4" /> Category 4</label>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <button type="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <span>Years of Experience</span>
+                <i class="fas fa-angle-down"></i>
+              </button>
+              <div class="dropdown-panel">
+                <label class="option-row"><input type="radio" name="experience" value="1-2" /> 1-2 years</label>
+                <label class="option-row"><input type="radio" name="experience" value="3-5" /> 3-5 years</label>
+                <label class="option-row"><input type="radio" name="experience" value="6+" /> 6+ years</label>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <button type="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <span>Location</span>
+                <i class="fas fa-angle-down"></i>
+              </button>
+              <div class="dropdown-panel">
+                <label class="option-row"><input type="checkbox" name="location" value="abuja" /> Abuja</label>
+                <label class="option-row"><input type="checkbox" name="location" value="lagos" /> Lagos</label>
+                <label class="option-row"><input type="checkbox" name="location" value="kano" /> Kano</label>
+                <label class="option-row"><input type="checkbox" name="location" value="ph" /> Port Harcourt</label>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <button type="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <span>Completed Portfolio</span>
+                <i class="fas fa-angle-down"></i>
+              </button>
+              <div class="dropdown-panel">
+                <label class="option-row"><input type="radio" name="portfolio" value="yes" /> Yes</label>
+                <label class="option-row"><input type="radio" name="portfolio" value="no" /> No</label>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <button type="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <span>Quality Score</span>
+                <i class="fas fa-angle-down"></i>
+              </button>
+              <div class="dropdown-panel">
+                <label class="option-row"><input type="checkbox" name="score" value="90-100" /> 90-100</label>
+                <label class="option-row"><input type="checkbox" name="score" value="70-89" /> 70-89</label>
+                <label class="option-row"><input type="checkbox" name="score" value="sub_70" /> Below 70</label>
+              </div>
+            </li>
+
+          </ul>
+        </nav>
+      </form>
+
+      <!-- Scoreboard Analytics Container Block -->
+      <section class="scorer-dashboard-panel">
+        <div class="score-brand-container">
+          <img src="../images/score.svg" alt="Credibility Analytics Badge" />
+        </div>
+        <div class="scorer-data-grid">
+          <div class="metric-card">
+            <h6>Event decorator</h6>
+            <p>Based in Abuja | Serves nearby states for additional fee</p>
           </div>
-          <div><img src="../images/notification.svg" alt="Noti" srcset="" /></div>
-          <div><img src="../images/comment.svg" alt="Comm" srcset="" /></div>
+          <div class="metric-card">
+            <h6>Services Pricing</h6>
+            <p class="accent-orange-text">Maximum spend <br /><strong>$3,500</strong></p>
+          </div>
+          <div class="metric-card">
+            <h6>Style</h6>
+            <p>10 Decorating styles</p>
+          </div>
+          <div class="metric-card">
+            <h6>Quick responder</h6>
+            <p><i class="fas fa-bolt" style="color:#ffb703"></i> Fast replies</p>
+          </div>
         </div>
-      </div>
-      <h5 class="velvet-marquee">Blue velvet marquee, decor</h5>
-      <div class="credibility-nav">
-        <ul>
-          <li class="dropdown" role="menu">
-            <button class="dropdown-toggle" aria-expanded="false">
-              <img src="../images/category.svg" alt="Category icon" />
-              <span>Category</span>
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-content" role="menuitem">
-              <li><a href="#">Category 1</a></li>
-              <li><a href="#">Category 2</a></li>
-              <li><a href="#">Category 3</a></li>
-              <li><a href="#">Category 4</a></li>
-              <li><a href="#">Category 5</a></li>
-              <li><a href="#">Category 6</a></li>
-            </ul>
-          </li>
-          <li class="dropdown" role="menu">
-            <button class="dropdown-toggle" aria-expanded="false">
-              <span>Years of Experience</span>
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-content" role="menuitem">
-              <li><a href="#">1-2 years</a></li>
-              <li><a href="#">3-5 years</a></li>
-              <li><a href="#">6+ years</a></li>
-            </ul>
-          </li>
-          <li class="dropdown" role="menu">
-            <button class="dropdown-toggle" aria-expanded="false">
-              <span>Location</span>
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-content" role="menuitem">
-              <li><a href="#">Abuja</a></li>
-              <li><a href="#">Lagos</a></li>
-              <li><a href="#">Kano</a></li>
-              <li><a href="#">Port Harcourt</a></li>
-              <li><a href="#">Other</a></li>
-            </ul>
-          </li>
-          <li class="dropdown" role="menu">
-            <button class="dropdown-toggle" aria-expanded="false">
-              <span>Completed Portfolio</span>
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-content" role="menuitem">
-              <li><a href="#">Yes</a></li>
-              <li><a href="#">No</a></li>
-            </ul>
-          </li>
-          <li class="dropdown" role="menu">
-            <button class="dropdown-toggle" aria-expanded="false">
-              <span>Quality Score</span>
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-content" role="menuitem">
-              <li><a href="#">90-100</a></li>
-              <li><a href="#">70-89</a></li>
-              <li><a href="#">Below 70</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="scorer-box">
-        <div><img src="../images/score.svg" alt="Score" srcset="" /></div>
-        <div class="scorer">
-          <div class="scorer-items">
-            <div class="scorer-items-title">Event decorator</div>
-            <div class="event-decorator">
-              Based in Abuja | Serves other near-by states for additional fee
+      </section>
+
+      <!-- Portfolio Section -->
+      <section class="portfolio-section">
+        <h3>Portfolio</h3>
+        <hr class="section-divider" />
+        
+        <div class="portfolio-cards-grid">
+          <div class="portfolio-item-card">
+            <div class="card-image-wrap">
+              <img src="../images/okoye.svg" alt="The Okoye Triplets Decor Design Presentation" />
+            </div>
+            <div class="card-caption">
+              <h6>The Okoye Triplets @ 1</h6>
+              <a href="#" class="details-anchor">View portfolio</a>
             </div>
           </div>
-          <div class="scorer-items">
-            <div class="scorer-items-title">Services Pricing</div>
-            <div class="services-pricing">
-              Maximum spend <br />
-              $3,500
-            </div>
+          <div class="portfolio-item-card">
+            <div class="card-image-wrap"><img src="../images/trad.svg" alt="Traditional Setup View" /></div>
           </div>
-          <div class="scorer-items">
-            <div class="scorer-items-title">Style</div>
-            <div>10 Decorating styles</div>
+          <div class="portfolio-item-card">
+            <div class="card-image-wrap"><img src="../images/aman.svg" alt="Anniversary Banquet Design" /></div>
           </div>
-          <div class="scorer-items">
-            <div class="scorer-items-title">Quick responder</div>
-            <div><img src="" alt="icons" /></div>
+          <div class="portfolio-item-card">
+            <div class="card-image-wrap"><img src="../images/baby.svg" alt="Elegant Baby Shower Stage Layout" /></div>
           </div>
         </div>
-      </div>
-      <h3>Portfolio</h3>
-      <hr />
-      <div class="credibility-../images">
-        <div><img src="../images/okoye.svg" alt="Pictures!" srcset="" /></div>
-        <div><img src="../images/trad.svg" alt="Pictures!" srcset="" /></div>
-        <div><img src="../images/aman.svg" alt="Pictures!" srcset="" /></div>
-        <div><img src="../images/baby.svg" alt="Pictures!" srcset="" /></div>
-      </div>
-    </div>
+      </section>
+
+    </main>
   </div>
-  <script>
-    // Centralized dropdown handling with keyboard support
-    const dropdowns = Array.from(document.querySelectorAll('.dropdown'));
-
-    function closeAllDropdowns() {
-      dropdowns.forEach(d => {
-        d.classList.remove('open');
-        const t = d.querySelector('.dropdown-toggle');
-        if (t) t.setAttribute('aria-expanded', 'false');
-      });
-    }
-
-    document.addEventListener('click', (e) => {
-      // if click inside a dropdown toggle, toggle that dropdown and close others
-      const toggle = e.target.closest('.dropdown-toggle');
-      if (toggle) {
-        const parent = toggle.closest('.dropdown');
-        const isOpen = parent.classList.toggle('open');
-        parent.querySelector('.dropdown-toggle').setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        // close other dropdowns
-        dropdowns.filter(d => d !== parent).forEach(d => d.classList.remove('open'));
-        e.stopPropagation();
-        return;
-      }
-
-      // click outside - close all
-      if (!e.target.closest('.dropdown')) {
-        closeAllDropdowns();
-      }
-    });
-
-    // Keyboard support
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeAllDropdowns();
-      }
-    });
-
-    // allow toggle with Enter/Space
-    dropdowns.forEach(d => {
-      const t = d.querySelector('.dropdown-toggle');
-      const content = d.querySelector('.dropdown-content');
-      if (!t || !content) return;
-      t.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const isOpen = d.classList.toggle('open');
-          t.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-          if (isOpen) content.querySelector('a')?.focus();
-        }
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          d.classList.add('open');
-          t.setAttribute('aria-expanded', 'true');
-          content.querySelector('a')?.focus();
-        }
-      });
-    });
-  </script>
+  <script src="../js/credibility.js"></script>
 </body>
-
 </html>

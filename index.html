@@ -4,109 +4,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Shadows+Into+Light&display=swap"
+  <link rel="preconnect" href="https://googleapis.com" />
+  <link rel="preconnect" href="https://gstatic.com" crossorigin />
+  <link href="https://googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <title>EVENTVET homepage</title>
 </head>
 
 <body>
+
   <header class="nav">
-    <div><img class="logo" src="images/logo.svg" alt="EventVet logo" /></div>
+    <div><img class="logo" src="images/logo.svg" alt="EventVet Logo" /></div>
     <nav class="navigation">
       <ul id="nav_itemss">
+        <!-- FIXED: Home text is now inside the clickable anchor link -->
         <li class="item"><a href="index.html">Home</a></li>
         <li class="item"><a href="pages/vendors.html">Vendors</a></li>
-        <li class="item dropdown">
+        <!-- <li class="item dropdown">
           <a href="#">Planning Tools</a>
           <ul class="dropdown-content">
-            <li>
-              <a href="pages/credibility.html">Credibility </a>
-            </li>
+            <li><a href="pages/credibility.html">Credibility</a></li>
             <li><a href="#">Budgeting</a></li>
-            <li>
-              <a href="#">Other</a>
-            </li>
+            <li><a href="#">Other</a></li>
+          </ul>
+        </li> -->
+        <!-- FIXED: Converted trigger to button and set up clean dropdown containers -->
+        <li class="item dropdown">
+          <button type="button" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            Planning Tools <i class="fas fa-angle-down" style="margin-left: 4px;"></i>
+          </button>
+          <ul class="dropdown-content">
+            <li><a href="pages/credibility.html">Credibility</a></li>
+            <li><a href="#">Budgeting</a></li>
+            <li><a href="#">Other</a></li>
           </ul>
         </li>
+
         <li class="item"><a href="pages/pricing.html">Pricing</a></li>
-        <li>
-          <a href="pages/login.html"><button class="login">Login</button></a>
-        </li>
-        <li>
-          <a href="pages/signup.html"><button class="signup">Create free account</button></a>
-        </li>
+        <li><a href="pages/login.html"><button class="login">Login</button></a></li>
+        <li><a href="pages/signup.html"><button class="signup">Create free account</button></a></li>
       </ul>
     </nav>
   </header>
+
   <main>
     <div class="bg">
       <div class="shuffle">
         <div><img class="text" src="images/shuffle.svg" alt="Shuffle" /></div>
-        <div>
-          <img class="text" src="images/text.svg" alt="Discover Top-notch Vendor" />
-        </div>
+        <div><img class="text" src="images/text.svg" alt="Discover Top-notch Vendor" /></div>
         <div class="credibility">
-          <div>
-            <button aria-label="Vendor credibility info">Credibility</button>
-          </div>
-          <div aria-hidden="true">&nbsp;</div>
+          <div><button aria-label="Credibility System">Credibility</button></div>
         </div>
       </div>
-      <div><img class="wiggly" src="images/wiggly.svg" alt="Decorative wavy background" /></div>
+      <div><img class="wiggly" src="images/wiggly.svg" alt="" aria-hidden="true" /></div>
       <div class="fourpack">
-        <div class="deco1"><img src="images/decorations.svg" alt="Decorative elements" /></div>
-        <div><img src="images/rita.svg" alt="" /></div>
-        <div><img src="images/rita.svg" alt="Portrait illustration" /></div>
-        <div class="toyin"><img src="images/toyin.svg" alt="Secondary portrait illustration" /></div>
-        <div class="deco2"><img src="images/decorations.svg" alt="" /></div>
+        <div class="deco1"><img src="images/decorations.svg" alt="" aria-hidden="true" /></div>
+        <div><img src="images/rita.svg" alt="Featured Elite Planner" /></div>
+        <div><img src="images/toyin.svg" alt="Lead Designer" class="special-offset" /></div>
+        <div class="deco2"><img src="images/decorations.svg" alt="" aria-hidden="true" /></div>
       </div>
     </div>
+
     <div class="browse">
       <div class="browse-text">
         <h3>Browse Categories</h3>
       </div>
-      <div class="browse-images">
-        <div class="">
+      <div class="browse-grid-container">
+        <div class="category-card">
           <img class="browse-img" src="images/wedding.svg" alt="Weddings" />
           <div class="category">Weddings</div>
           <div class="description">Special Event</div>
         </div>
-        <div>
+        <div class="category-card">
           <img class="browse-img" src="images/business.svg" alt="Business Conference" />
           <div class="category">Business Conference</div>
           <div class="description">Corporate Event</div>
         </div>
-        <div>
+        <div class="category-card">
           <img class="browse-img" src="images/warming.svg" alt="House warming" />
           <div class="category">House warming</div>
           <div class="description">Special Event</div>
         </div>
-        <div>
+        <div class="category-card">
           <img class="browse-img" src="images/fashion.svg" alt="Fashion Shows" />
           <div class="category">Fashion Shows</div>
           <div class="description">Fundraising</div>
         </div>
-      </div>
-      <div class="browse-images">
-        <div>
+        <div class="category-card">
           <img class="browse-img" src="images/art.svg" alt="Art show" />
           <div class="category">Art show</div>
           <div class="description">Charity Event</div>
         </div>
-        <div>
+        <div class="category-card">
           <img class="browse-img" src="images/launch.svg" alt="Product Launch" />
           <div class="category">Product Launch</div>
           <div class="description">Corporate Event</div>
         </div>
-        <div>
+        <div class="category-card">
           <img class="browse-img" src="images/birthday.svg" alt="Birthdays" />
           <div class="category">Birthdays</div>
           <div class="description">Special Event</div>
         </div>
-        <div>
+        <div class="category-card">
           <img class="browse-img" src="images/others.svg" alt="Others" />
           <div class="category">Others</div>
           <div class="description">All Events</div>
@@ -121,196 +121,116 @@
           <span class="center">team.</span>
         </h3>
       </div>
+
+      <!-- FIXED: Added unified grid container matching your CSS layout engine variables -->
       <div class="featurelist1_wrapper">
-        <div class="listedfeatures1">
-          <h3>photograghy</h3>
+        <div>
+          <h3>Photography</h3>
           <div class="photoimage-wrapper">
-            <p>
-              Capture your special moments with
-              <br />our talented photographers.
-            </p>
-            <img src="./images/photography.svg" alt="A camera icon image" />
+            <p>Capture your special moments with our talented photographers.</p>
+            <img src="./images/photography.svg" alt="Camera icon" />
           </div>
         </div>
-        <div class="listedfeatures2">
+        <div>
           <h3>Catering</h3>
           <div class="photoimage-wrapper">
-            <p>
-              Indulge in delicious cuisine prepared by our
-              <br />
-              expert caterers.
-            </p>
-            <img src="./images/catering.svg" alt="A hand holdingdish icon image" />
+            <p>Indulge in delicious cuisine prepared by our expert caterers.</p>
+            <img src="./images/catering.svg" alt="Serving dish icon" />
           </div>
         </div>
-        <div class="listedfeatures3">
+        <div>
           <h3>Entertainment</h3>
           <div class="photoimage-wrapper">
-            <p>
-              Experience unforgettable performances by
-              <br />
-              our talented entertainers.
-            </p>
-            <img src="./images/entertainment.svg" alt="Music note icon image" />
+            <p>Experience unforgettable performances by our talented entertainers.</p>
+            <img src="./images/entertainment.svg" alt="Music note icon" />
           </div>
         </div>
-      </div>
-      <div class="featurelist2_wrapper">
-        <div class="listedfeatures1">
-          <h3>photograghy</h3>
-          <div class="photoimage-wrapper">
-            <p>
-              Capture your special moments with
-              <br />our talented photographers.
-            </p>
-            <img src="./images/photography.svg" alt="A camera icon image" />
-          </div>
-        </div>
-        <div class="listedfeatures2">
-          <h3>Catering</h3>
-          <div class="photoimage-wrapper">
-            <p>
-              Indulge in delicious cuisine prepared by our
-              <br />
-              expert caterers.
-            </p>
-            <img src="./images/catering.svg" alt="A hand holdingdish icon image" />
-          </div>
-        </div>
-        <div class="listedfeatures3">
-          <h3>Entertainment</h3>
-          <div class="photoimage-wrapper">
-            <p>
-              Experience unforgettable performances by
-              <br />
-              our talented entertainers.
-            </p>
-            <img src="./images/entertainment.svg" alt="Music note icon image" />
-          </div>
-        </div>
-      </div>
-      <div class="featurelist3_wrapper">
-        <div class="listedfeatures2">
+        <div>
           <h3>Decorations</h3>
           <div class="photoimage-wrapper">
-            <p>
-              Transform your event space<br />
-              with stunning decorations.
-            </p>
-            <img src="./images/decor.svg" alt="A hand holdingdish icon image" />
+            <p>Transform your event space with stunning decorations.</p>
+            <img src="./images/decor.svg" alt="Decor ribbon icon" />
           </div>
         </div>
-        <div class="listedfeatures3">
+        <div>
           <h3>Planning</h3>
           <div class="photoimage-wrapper">
-            <!-- <h3>Planning</h3> -->
-            <p>
-              Get professional assistance in planning <br />
-              your dream event.
-            </p>
-            <img src="./images/plan.svg" alt="Music note icon image" />
+            <p>Get professional assistance in planning your dream event.</p>
+            <img src="./images/plan.svg" alt="Calendar agenda icon" />
           </div>
         </div>
       </div>
+
       <div class="view">
         <p>view all</p>
-        <img src="./images/rightarrow.svg" alt="Right Arrow icon image" />
+        <img src="./images/rightarrow.svg" alt="Right Arrow" />
       </div>
+
       <div class="getstarted">
         <div class="paragraph-button">
           <h1>Need a place to <span class="purple fonts">start?</span></h1>
-          <p>
-            Tired of looking through every single vendor of <br />
-            each service type? We will select a tailored<br />
-            package that best fits your interests.
-          </p>
+          <p>Tired of looking through every single vendor profile for each service type? We will select a tailored
+            package that best fits your interests.</p>
           <a href="pages/signup.html"><button class="get-started">GET STARTED</button></a>
         </div>
-        <img src="./images/getStarted.svg" alt="Decorated Background image" />
+        <img src="./images/getStarted.svg" alt="Decorated background visual layout" />
       </div>
     </div>
+
     <div class="crs_wrapper">
       <div class="choiceevent-wrapper">
-        <div class="organise">
-          <h3>Everything you need to organize</h3>
-        </div>
-        <div class="eventchoice-text">
-          <h3><span class="colortext"> the event of your choice.</span></h3>
-        </div>
+        <h3>Everything you need to organize <span class="colortext">the event of your choice.</span></h3>
       </div>
       <div class="mybudget">
-        <img src="./images/Yourbuget.svg" />
-        <img src="./images/guestList.svg" class="GList" />
-        <img src="./images/VCSS.svg" />
+        <img src="./images/Yourbuget.svg" alt="Budgeting tools interface display" />
+        <img src="./images/guestList.svg" class="GList" alt="Guest tracking tools interface display" />
+        <img src="./images/VCSS.svg" alt="Credibility metric analytics interface display" />
       </div>
       <div class="recently">
-        <h3>
-          Recently added <span class="colortext">Album and events</span>
-        </h3>
+        <h3>Recently added <span class="colortext">Album and events</span></h3>
       </div>
       <div class="Albumevents-wrapper">
-        <div class="oo">
-          <img src="./images/O&O.svg" />
-        </div>
-        <div class="vowrenew">
-          <img src="./images/vowRenewal.svg" />
-        </div>
-        <div class="vowrenew">
-          <img src="./images/Amaka.svg" />
-        </div>
+        <div class="album-frame"><img src="./images/O&O.svg" alt="Wedding Showcase Album" /></div>
+        <div class="album-frame"><img src="./images/vowRenewal.svg" alt="Anniversary Showcase Album" /></div>
+        <div class="album-frame"><img src="./images/Amaka.svg" alt="Gala Showcase Album" /></div>
       </div>
     </div>
-    <div class="Testimonial-wrapper" id="grad">
+
+    <!-- FIXED: Connected markup elements to use the layout variables defined in your CSS testimonial cards -->
+    <div class="testimonials-marquee-section" id="grad">
       <div class="LtrustedArrow">
-        <h1 class="LTrusted">
-          Loved & <br />
-          trusted
-        </h1>
+        <h1 class="LTrusted">Loved &amp;<br />trusted</h1>
         <div class="Arrows">
-          <img src="./images/backarrow.svg" class="arrows" />
-          <img src="./images/forwardarrow.svg" class="arrows" />
+          <img src="./images/backarrow.svg" class="arrows" alt="Slide left" />
+          <img src="./images/forwardarrow.svg" class="arrows" alt="Slide right" />
         </div>
       </div>
-      <div class="forwardbackward">
-        <!-- <img src="./images/backarrow.svg" />
-          <img src="./images/forwardarrow.svg" /> -->
-        <!-- >          <span class="text" ><p>"As an event planner, I rely on EventVet's Vendor <br>
-            Credibility Scoring System 
-           to ensure the quality <br>
-            and reliability of vendors. 
-           It's a fantastic tool that <br> 
-           saves me time and stress!"</p></span -->
-      </div>
+
       <div class="text-wrapper card">
-        <p>
-          "As an event planner, I rely on EventVet's Vendor <br />
-          Credibility Scoring System to ensure the quality <br />
-          and reliability of vendors. It's a fantastic tool that <br />
-          saves me time and stress!"
-        </p>
-        <div class="testimonierprofile card1">
-          <img src="./images/SD.svg" class="profile1" /><span class="NaImg">
-            <h3 class="SD1">Sophia Davis</h3>
-            <br />
-            <h3 class="SD2">Event planner</h3>
-          </span>
-          <!-- <h3>Event planner</h3> -->
-        </div>
-        <div class="ImMAp card1">
-          <p>
-            “I highly recommend EventVet to anyone who want to <br />
-            plan event. The vendors credibility scoring is a <br />
-            fantastic addition that sets this platform apart from <br />
-            others. It gives me peace of mind knowing that I can<br />
-            trust the vendors I choose. Great job, EventVet!"
-          </p>
-          <img src="./images/MA.svg" width="90" height="150" class="profile2" /><span class="NaImg1">
-            <h3 class="SD1">Michael Adedoja</h3>
-            <br />
-            <h3 class="SD2">Marketing Director</h3>
-          </span>
-        </div>
-        <img src="./images/test3.svg" />
+        <blockquote class="review-bubble-card">
+          <p class="quote-text">"As an event planner, I rely on EventVet's Vendor Credibility Scoring System to ensure
+            the quality and reliability of vendors. It's a fantastic tool that saves me time and stress!"</p>
+          <footer class="reviewer-profile-footer">
+            <div class="reviewer-avatar"><img src="./images/SD.svg" alt="Sophia Davis" /></div>
+            <div class="reviewer-credentials">
+              <h5 class="SD1">Sophia Davis</h5>
+              <span class="SD2">Event planner</span>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="review-bubble-card">
+          <p class="quote-text">“I highly recommend EventVet to anyone who wants to plan an event. The vendors'
+            credibility scoring is a fantastic addition that sets this platform apart from others. It gives me peace of
+            mind knowing that I can trust the vendors I choose. Great job, EventVet!"</p>
+          <footer class="reviewer-profile-footer">
+            <div class="reviewer-avatar"><img src="./images/MA.svg" alt="Michael Adedoja" /></div>
+            <div class="reviewer-credentials">
+              <h5 class="SD1">Michael Adedoja</h5>
+              <span class="SD2">Marketing Director</span>
+            </div>
+          </footer>
+        </blockquote>
       </div>
     </div>
     <div class="vendor">
@@ -319,85 +239,125 @@
         <button class="Allevent">All events</button>
       </div>
       <div class="become">
-        <div class="register">
-          <h2>Want to become a vendor?</h2>
-          <img src="./images/vendorReg.svg" width="350" height="250" class="creative" />
-          <!-- <p>Sign up on The Eventvet to reach more clients and book more events</p>
-            <button class="Reg">Register</button> -->
+        <div class="onboarding-graphic">
+          <img src="./images/vendorReg.svg" class="creative" alt="Workstation operational presentation illustration" />
         </div>
         <div class="Parabutt">
-          <p>
-            Sign up on The Eventvet to reach more clients and book more events
-          </p>
+          <h2>Want to become a vendor?</h2>
+          <p>Sign up on The Eventvet to reach more clients and book more events seamlessly.</p>
           <button class="Reg">Register</button>
         </div>
-        <!-- <img src="./images/vendorRegblack.svg"> -->
       </div>
     </div>
+
     <div class="EE">
       <div class="explore">
         <div class="eventbtns">
-          <h1>
-            Experience <br />
-            Eventvet
-          </h1>
+          <h1>Experience <br />Eventvet</h1>
           <button class="btns">explore</button>
         </div>
-
-        <div>
-          <img src="./images/EEvet.svg" />
-          <img src="./images/EEvet2.svg" />
-          <img src="./images/EEvet3.svg" />
-          <img src="./images/EEvethalf.svg" />
-        </div>
-        <div>
-          <img src="./images/2EEvet.svg" />
-          <img src="./images/2EEvet2.svg" />
-          <img src="./images/2EEvet3.svg" />
-          <img src="./images/2EEvet4.svg" />
+        <div class="mosaic-imagery-wrapper">
+          <div class="mosaic-row">
+            <img src="./images/EEvet.svg" alt="Event visual grid presentation" />
+            <img src="./images/EEvet2.svg" alt="Event visual grid presentation" />
+            <img src="./images/EEvet3.svg" alt="Event visual grid presentation" />
+            <img src="./images/EEvethalf.svg" alt="Event visual grid presentation" />
+          </div>
+          <div class="mosaic-row">
+            <img src="./images/2EEvet.svg" alt="Event visual grid presentation" />
+            <img src="./images/2EEvet2.svg" alt="Event visual grid presentation" />
+            <img src="./images/2EEvet3.svg" alt="Event visual grid presentation" />
+            <img src="./images/2EEvet4.svg" alt="Event visual grid presentation" />
+          </div>
         </div>
       </div>
     </div>
-    <footer>
-      <div class="footer-container">
-        <div class="footer-logo">
-          <img src="./images/logo.svg" />
-          <p>
-            Get started with Event <br />
-            planning
-          </p>
+
+    <!-- FIXED: Restructured nested brand elements to follow your CSS column spacing grids -->
+    <!-- FIXED: Structuring distinct layout columns to fit your horizontal CSS grid tracks -->
+    <!-- FIXED: Rewritten semantics to explicitly pass your layout grid track classes -->
+    <!-- FIXED: Rewritten semantics to explicitly pass your layout grid track classes -->
+    <footer class="app-footer">
+      <div class="footer-primary-wrap">
+
+        <!-- Column 1: Brand Info -->
+        <div class="footer-identity-column">
+          <img src="images/logo.svg" alt="EventVet Logo" />
+          <p>Get started with simplified, smart event planning today.</p>
         </div>
-        <ul class="footer-column">
-          <h2>Plan your Event</h2>
-          <li><a href="#">Venues and vendors</a></li>
-          <li><a href="#">Guest list</a></li>
-          <li><a href="#">Credibility scoring</a></li>
-          <li><a href="#">Contact us</a></li>
-          <!-- <li><a href="#">Privacy Policy</a></li> -->
-        </ul>
-        <ul class="footer-column">
-          <h2>About</h2>
-          <li><a href="#">Our story</a></li>
-          <li><a href="#">Become a vendor</a></li>
-          <li><a href="#">Reviews</a></li>
-          <li><a href="#">Refer a friend</a></li>
-          <!-- <li><a href="#">Terms & conditions</a></li> -->
-        </ul>
-        <ul class="footer-column">
-          <h2>Contact</h2>
-          <li>
-            <img src="./images/message.svg" /><a href="mailto:support@Eventvet.com">support@Eventvet.com</a>
-          </li>
-          <li><a href="#">Social Media</a></li>
-        </ul>
+
+        <!-- Column 2: Plan your Event Link Lists -->
+        <div class="footer-links-column">
+          <h4>Plan your Event</h4>
+          <ul>
+            <li><a href="#">Venues and vendors</a></li>
+            <li><a href="#">Guest list</a></li>
+            <li><a href="pages/credibility.html">Credibility scoring</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Corporate Profile Links -->
+        <div class="footer-links-column">
+          <h4>About</h4>
+          <ul>
+            <li><a href="#">Our story</a></li>
+            <li><a href="#">Become a vendor</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Refer a friend</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Direct Communication Channels -->
+        <div class="footer-links-column">
+          <h4>Contact</h4>
+          <ul>
+            <li class="contact-email-row">
+              <a href="mailto:support@Eventvet.com">support@Eventvet.com</a>
+            </li>
+            <li><a href="#">Social Media Channels</a></li>
+          </ul>
+        </div>
+
       </div>
-      <div class="legal-info">
-        <p><a href="#">Privacy Policy</a></p>
-        <p><a href="#">Terms & conditions</a></p>
-        <p>© 2024 Eventvet, Inc. All rights reserved.</p>
+
+      <!-- Baseline Attribution Bar Component -->
+      <div class="footer-secondary-legal-bar">
+        <div class="legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; conditions</a>
+        </div>
+        <p class="copyright-notice">&copy; 2026 Eventvet, Inc. All rights reserved.</p>
       </div>
     </footer>
+
+
+
   </main>
+  <script>
+    /* Ensure this is saved inside js/navigation.js */
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownParent = document.querySelector('.dropdown');
+  const menuTrigger = document.querySelector('.dropdown-trigger');
+
+  if (menuTrigger && dropdownParent) {
+    menuTrigger.addEventListener('click', (event) => {
+      event.stopPropagation(); // Stops click from leaking out to document root
+      
+      // Toggles the .open class class parameter
+      dropdownParent.classList.toggle('open');
+    });
+
+    // Closes the menu if the user clicks anywhere outside of it
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.dropdown')) {
+        dropdownParent.classList.remove('open');
+      }
+    });
+  }
+});
+
+  </script>
 </body>
 
 </html>

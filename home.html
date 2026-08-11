@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVENTVET - Discover Top-notch Event Vendors</title>
+  <link rel="preconnect" href="https://googleapis.com" />
+  <link rel="preconnect" href="https://gstatic.com" crossorigin />
+  <link href="https://googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://fontawesome.com" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Global App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-anchor">
+        <img class="logo" src="images/logo.svg" alt="EventVet home" />
+      </a>
+      <nav class="main-navigation" aria-label="Global Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="pages/vendors.html" class="nav-link">Vendors</a></li>
+          <li class="nav-item dropdown">
+            <button type="button" class="dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+              <span>Planning Tools</span>
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="pages/credibility.html">Credibility Scoring</a></li>
+              <li><a href="pages/budgeting.html">Budgeting Tools</a></li>
+              <li><a href="pages/other-tools.html">Other Tools</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="pages/pricing.html" class="nav-link">Pricing</a></li>
+        </ul>
+      </nav>
+      <div class="auth-action-group">
+        <a href="pages/login.html" class="btn btn-secondary">Login</a>
+        <a href="pages/signup.html" class="btn btn-primary">Create free account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Workspace Banner -->
+    <section class="hero-section" aria-label="Introduction Banner">
+      <div class="hero-container">
+        <div class="hero-branding">
+          <div class="graphic-shuffle"><img src="images/shuffle.svg" alt="Shuffle element" /></div>
+          <div class="graphic-text"><img src="images/text.svg" alt="Discover Top-notch Vendor variations" /></div>
+          <div class="credibility-badge-wrap">
+            <a href="pages/credibility.html" class="btn btn-badge" aria-label="Learn about vendor credibility info">Credibility</a>
+          </div>
+        </div>
+        <div class="hero-decorative-wave">
+          <img class="wiggly-divider" src="images/wiggly.svg" alt="" aria-hidden="true" />
+        </div>
+        <div class="hero-avatar-collage">
+          <div class="deco-blob upper"><img src="images/decorations.svg" alt="" aria-hidden="true" /></div>
+          <div class="portrait-card"><img src="images/rita.svg" alt="Featured Elite Event Planner" /></div>
+          <div class="portrait-card special-offset"><img src="images/rita.svg" alt="Creative Coordinator" /></div>
+          <div class="portrait-card prominent-toyin"><img src="images/toyin.svg" alt="Lead Designer profile presentation" /></div>
+          <div class="deco-blob lower"><img src="images/decorations.svg" alt="" aria-hidden="true" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Grid Sections -->
+    <section class="categories-section" aria-labelledby="cat-heading">
+      <div class="section-header-wrap">
+        <h3 id="cat-heading">Browse Categories</h3>
+      </div>
+      <div class="categories-flexible-grid">
+        <article class="category-card">
+          <div class="card-thumbnail"><img src="images/wedding.svg" alt="" aria-hidden="true" /></div>
+          <div class="card-meta"><h4>Weddings</h4><span class="badge-tag tag-special">Special Event</span></div>
+        </article>
+        <article class="category-card">
+          <div class="card-thumbnail"><img src="images/business.svg" alt="" aria-hidden="true" /></div>
+          <div class="card-meta"><h4>Business Conference</h4><span class="badge-tag tag-corporate">Corporate Event</span></div>
+        </article>
+        <article class="category-card">
+          <div class="card-thumbnail"><img src="images/warming.svg" alt="" aria-hidden="true" /></div>
+          <div class="card-meta"><h4>House Warming</h4><span class="badge-tag tag-special">Special Event</span></div>
+        </article>
+        <article class="category-card">
+          <div class="card-thumbnail"><img src="images/fashion.svg" alt="" aria-hidden="true" /></div>
+          <div class="card-meta"><h4>Fashion Shows</h4><span class="badge-tag tag-fundraiser">Fundraising</span></div>
+        </article>
+        <article class="category-card">
+          <div class="card-thumbnail"><img src="images/art.svg" alt="" aria-hidden="true" /></div>
+          <div class="card-meta"><h4>Art Show</h4><span class="badge-tag tag-charity">Charity Event</span></div>
+        </article>
+        <article class="category-card">
+          <div class="card-thumbnail"><img src="images/launch.svg" alt="" aria-hidden="true" /></div>
+          <div class="card-meta"><h4>Product Launch</h4><span class="badge-tag tag-corporate">Corporate Event</span></div>
+        </article>
+        <article class="category-card">
+          <div class="card-thumbnail"><img src="images/birthday.svg" alt="" aria-hidden="true" /></div>
+          <div class="card-meta"><h4>Birthdays</h4><span class="badge-tag tag-special">Special Event</span></div>
+        </article>
+        <article class="category-card flex-fallback">
+          <div class="card-thumbnail"><img src="images/others.svg" alt="" aria-hidden="true" /></div>
+          <div class="card-meta"><h4>Others</h4><span class="badge-tag tag-all">All Events</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="team-builder-section" aria-labelledby="builder-title">
+      <div class="builder-intro-banner">
+        <h2 id="builder-title" class="marketing-heading">
+          Find vendors for every vibe, <br />
+          <span class="accent-font-brand">Let's</span> build your vendor <span class="block-span">team.</span>
+        </h2>
+      </div>
+      <div class="services-dynamic-matrix">
+        <article class="service-feature-card">
+          <h3>Photography</h3>
+          <div class="service-body-content">
+            <p>Capture your special moments with our talented photographers.</p>
+            <div class="service-icon-wrap"><img src="images/photography.svg" alt="Camera icon" /></div>
+          </div>
+        </article>
+        <article class="service-feature-card">
+          <h3>Catering</h3>
+          <div class="service-body-content">
+            <p>Indulge in delicious cuisine prepared by our expert caterers.</p>
+            <div class="service-icon-wrap"><img src="images/catering.svg" alt="Serving dish icon" /></div>
+          </div>
+        </article>
+        <article class="service-feature-card">
+          <h3>Entertainment</h3>
+          <div class="service-body-content">
+            <p>Experience unforgettable performances by our talented entertainers.</p>
+            <div class="service-icon-wrap"><img src="images/entertainment.svg" alt="Music note icon" /></div>
+          </div>
+        </article>
+        <article class="service-feature-card">
+          <h3>Decorations</h3>
+          <div class="service-body-content">
+            <p>Transform your event space with stunning decorations.</p>
+            <div class="service-icon-wrap"><img src="images/decor.svg" alt="Decor icon" /></div>
+          </div>
+        </article>
+        <article class="service-feature-card">
+          <h3>Planning</h3>
+          <div class="service-body-content">
+            <p>Get professional assistance in planning your dream event.</p>
+            <div class="service-icon-wrap"><img src="images/plan.svg" alt="Calendar itinerary icon" /></div>
+          </div>
+        </article>
+      </div>
+      <div class="action-footer-gallery">
+        <a href="pages/vendors.html" class="gallery-explore-anchor">
+          <span>View all features</span>
+          <img src="images/rightarrow.svg" alt="" aria-hidden="true" />
+        </a>
+      </div>
+    </section>
+
+    <!-- Call to Action Segment (Repaired Cut-off Content) -->
+    <section class="cta-interstitial-block" aria-label="Get Started Strategy">
+      <div class="cta-panel-content">
+        <div class="cta-text-column">
+          <h2>Need a place to <span class="accent-font-brand">start?</span></h2>
+          <p>Tired of looking through every single vendor profile for each service type? We will select a tailored package that best fits your interests.</p>
+          <div class="cta-action-row">
+            <a href="pages/signup.html" class="btn btn-primary large-scale">GET STARTED</a>
+          </div>
+        </div>
+        <div class="cta-graphic-column">
+          <img src="images/getStarted.svg" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Workspace Tools Block Section -->
+    <section class="tools-and-albums-section">
+      <div class="tools-intro-wrap">
+        <h3>Everything you need to organize <span class="accent-color-text">the event of your choice.</span></h3>
+      </div>
+      <div class="tools-visual-row">
+        <div class="tool-asset-card"><img src="images/Yourbuget.svg" alt="Budget interface metrics layout mockup" /></div>
+        <div class="tool-asset-card special-lift"><img src="images/guestList.svg" alt="Guest management screen dashboard presentation" /></div>
+        <div class="tool-asset-card"><img src="images/VCSS.svg" alt="Vendor compliance score sheets visualization block" /></div>
+      </div>
+      <div class="recently">
+      <h3>Recently added <span class="colortext">Album and events</span></h3>
+    </div>
+    
+    <div class="Albumevents-wrapper">
+      <div class="album-frame">
+        <img src="./images/O&O.svg" alt="Wedding Celebration" />
+      </div>
+      <div class="album-frame">
+        <img src="./images/vowRenewal.svg" alt="Vow Renewal" />
+      </div>
+      <div class="album-frame">
+        <img src="./images/Amaka.svg" alt="Anniversary Event" />
+      </div>
+    </div>
+
+    <!-- Global Application Footer -->
+    <footer class="app-footer">
+      <div class="footer-primary-wrap">
+        
+        <!-- Column 1: Brand Info -->
+        
+          <img class="footer-logo" src="./images/logo.svg" alt="Eventvet home" />
+          <p>Get started with simplified, smart event planning today.</p>
+        </div>
+        
+        <!-- Column 2: Tools Links -->
+        <div class="footer-links-column">
+          <h4>Plan your Event</h4>
+          <ul>
+            <li><a href="pages/vendors.html">Venues and vendors</a></li>
+            <li><a href="#">Guest list</a></li>
+            <li><a href="pages/credibility.html">Credibility scoring</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 3: Corporate Info -->
+        <div class="footer-links-column">
+          <h4>About</h4>
+          <ul>
+            <li><a href="#">Our story</a></li>
+            <li><a href="#">Become a vendor</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Refer a friend</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 4: Contact Options -->
+        <div class="footer-links-column">
+          <h4>Contact</h4>
+          <ul>
+            <li class="contact-email-row">
+              <a href="mailto:support@Eventvet.com">support@Eventvet.com</a>
+            </li>
+            <li><a href="#">Social Media Channels</a></li>
+          </ul>
+        </div>
+        
+      </div>
+
+      <!-- Legal Sub-bar Footer Context -->
+      <div class="footer-secondary-legal-bar">
+        <div class="legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; conditions</a>
+        </div>
+        <p class="copyright-notice">&copy; 2026 Eventvet, Inc. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>
+
+
